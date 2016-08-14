@@ -30,7 +30,14 @@
                     				<td>{{ $book->title }}</td>
                     				<td>{{ $book->author }}</td>
                     				<td>{{ $book->description }}</td>
-                                    <td><a href="{{ url('/book/'.$book->id.'/edit') }}"> Edit </td>
+                                    <td>
+                                        <a href="{{ url('/book/'.$book->id.'/edit') }}"> Edit <a>
+                                        <form action="{{ url('/book/'.$book->id) }}" method="post">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <button>Delete</button>
+                                        </form>    
+                                    </td>
                     			</tr>
                     		@empty
                     			<tr>
